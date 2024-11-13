@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна 2</title>
+    <link rel="stylesheet" href="style_2.css">
+    <style>
+        .header {
+            color: #336699;
+            background-color: burlywood;
+            text-align: center;
+            padding: 20px;
+        }
+        .content {
+            margin: 20px;
+            font-size: 1.1em;
+        }
+        p::first-letter {
+            font-size: 2em;
+        }
+        .myVariant {
+            background-color: #eaa850;
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body bgcolor="#eaa150">
+    <header class="header">
+        <h1>Лабораторна робота 2</h1>
+    </header>
+
+    <div class="content">
+        <!-- Inline -->
+        <p style="text-shadow: 2px 2px 5px blue; font-style: italic;">Подальші два роки запам’яталися встановленням нових рекордів, адже кількість учасників збільшилася вдвічі. 
+            Цей текст оформлений за допомогою вбудованого CSS. Він має тінь тексту та нахилений стиль.</p>
+        
+        <!-- ідентифікатор -->
+        <div id="highlighted-text">
+            <p>До речі, дюк де Рішельє також долучається до цієї події. Цей текст оформлений за допомогою індифікатора.</p>
+        </div>
+
+        <p align="right">
+            <img src="more_raccoon.jpg" width="300" 
+            style="position: absolute; left:1%; clip:rect(0px, 300px, 150px, 150px)">
+        </p><br><br><br><br><br><br><br>
+
+        <!-- Изображение с обтеканием текста с помощью float -->
+        <img src="raccoon_fun.png" alt="Пример изображения" class="float-image">
+        <p>Lorem ipsum dolor sit amet. Et voluptatem perspiciatis est facilis reiciendis non atque eaque. 
+            A omnis maxime sit quidem quidem qui galisum tenetur sit doloribus eveniet? Qui ipsam quibusdam et quia nulla est libero nostrum ab ducimus 
+            corporis ut amet enim At veniam iusto ut expedita expedita.
+            Aut ipsum ullam qui nulla nihil ut dignissimos magni aut minus nemo et quia optio quo asperiores soluta aut dicta architecto. 
+            Aut quia nesciunt et voluptas dolore et dolorem deleniti aut fugit quos hic delectus nihil aut nesciunt minus ut perferendis perferendis. 
+            Ab officiis magni sed rerum dolorem et culpa dolorem ex temporibus ipsa qui quia architecto. Est dolores suscipit ut deserunt quod qui odio rerum non itaque cumque ut aperiam ducimus.</p>
+    </div>
+    <div class="myVariant">
+        <div class="work3">
+            <h2>Список с кастомным маркером</h2>
+            <ul class="custom-image-list">
+                <li>Енот за кермом</li>
+                <li>Йому весело</li>
+                <li>Він водій</li>
+            </ul>
+        </div>
+    
+        <div class="work4">
+            <div class="row">
+                <div class="box"></div>
+                <div class="box tall"></div>
+                <div class="box"></div>
+            </div>
+            <div class="row">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна 3</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Генератор таблиці з рандомними даними людей</h2>
+    
+    <label for="interval">Інтервал (в мс): </label>
+    <input type="number" id="interval" placeholder="Наприклад, 1000">
+    <button id="start">Почати генерацію</button>
+    <button id="stop">Зупинити генерацію</button>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ім'я</th>
+                <th>Вік</th>
+                <th>Місто</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+
+    
+    <script>
+        let intervalId;
+        let rowId = 1;
+
+        function generateRandomData() {
+            const names = ["Олексій", "Марія", "Іван", "Наталія", "Петро", "Михайло", "Ірина", "Валерій", "Олег", "Андрій", "Вікторія", "Анастасія", "Юлія", "Олена", "Віктор", "Василь", "Сергій", "Дмитро", "Євген", "Артем", "Артур", "Максим", "Єлизавета", "Катерина", "Аліна", "Дарина", "Софія", "Алла", "Людмила", "Тетяна", "Марина", "Надія", "Лідія", "Галина", "Оксана", "Христина"];
+            const cities = ["Київ", "Львів", "Одеса", "Харків", "Дніпро", "Запоріжжя", "Кривий ріг", "Донецьк", "Луганськ", "Миколаїв", "Полтава", "Чернігів", "Черкаси", "Житомир", "Суми", "Херсон", "Вінниця", "Чернівці", "Тернопіль", "Івано-Франківськ", "Ужгород", "Сімферополь", "Севастополь", "Хмельницький", "Рівне", "Кропивницький", "Маріуполь", "Бердянськ", "Кам'янське", "Слов'янськ", "Біла Церква", "Краматорськ", "Мелітополь", "Нікополь", "Сєвєродонецьк"]
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomAge = Math.floor(Math.random() * 121);
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+
+            $("#table-body").append(`
+                <tr>
+                    <td>${rowId++}</td>
+                    <td>${randomName}</td>
+                    <td>${randomAge}</td>
+                    <td>${randomCity}</td>
+                </tr>
+            `);
+        }
+
+        $(document).ready(function() {
+            $("#start").click(function() {
+                const interval = parseInt($("#interval").val());
+                if (isNaN(interval) || interval <= 0) {
+                    alert("Введіть коректний інтервал у мілісекундах!");
+                    return;
+                }
+
+                intervalId = setInterval(generateRandomData, interval);
+            });
+
+            $("#stop").click(function() {
+                clearInterval(intervalId);
+            });
+        });
+    </script>
+</body>
+</html>

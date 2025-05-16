@@ -1,17 +1,12 @@
-// Выбираем базу данных (будет создана, если не существует)
 use schedule;
-
-// Удаляем коллекцию lessons, если она существует
 db.lessons.drop();
 
-// Создаем коллекцию lessons
 db.createCollection("lessons");
 
-// Заполняем коллекцию данными для лабораторной работы (вариант 1)
 db.lessons.insertMany([
   {
     date: "2025-05-10",
-    time: 1,  // Номер пары
+    time: 1,  // пара
     auditorium: "401",
     subject: "Бази даних",
     type: "лекція",
@@ -191,6 +186,5 @@ db.lessons.insertMany([
   }
 ]);
 
-// Проверяем результаты
 print("Данные успешно добавлены в коллекцию lessons:");
 db.lessons.find().forEach(printjson);

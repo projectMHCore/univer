@@ -140,7 +140,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Обработчик для кнопок "История запросов"
       const historyButtons = document.querySelectorAll('.history-button');
       
       historyButtons.forEach(button => {
@@ -148,13 +147,11 @@
           const type = this.getAttribute('data-type');
           const historyContainer = document.getElementById(`${type}-history`);
           
-          // Переключаем видимость блока истории
           if (historyContainer.style.display === 'block') {
             historyContainer.style.display = 'none';
           } else {
             historyContainer.style.display = 'block';
             
-            // Загружаем историю в зависимости от типа запроса
             switch (type) {
               case 'group':
                 loadGroupHistory();
@@ -170,13 +167,12 @@
         });
       });
       
-      // Функция загрузки истории запросов по группам
       function loadGroupHistory() {
         const groupHistoryContainer = document.getElementById('group-history');
         const groupSelect = document.getElementById('group');
         const selectedGroup = groupSelect.value;
         
-        // Ищем все ключи в localStorage, которые начинаются с 'group_labs_'
+        // localStorage 'group_labs_'
         const historyItems = [];
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
@@ -217,11 +213,10 @@
         }
       }
       
-      // Функция загрузки истории запросов по преподавателям
       function loadTeacherHistory() {
         const teacherHistoryContainer = document.getElementById('teacher-history');
         
-        // Ищем все ключи в localStorage, которые начинаются с 'teacher_lectures_'
+        // localStorage 'teacher_lectures_'
         const historyItems = [];
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);
@@ -264,12 +259,11 @@
           teacherHistoryContainer.innerHTML = '<p>Немає збережених запитів по викладачах.</p>';
         }
       }
-      
-      // Функция загрузки истории запросов по аудиториям
+  
       function loadAuditoriumHistory() {
         const auditoriumHistoryContainer = document.getElementById('auditorium-history');
         
-        // Ищем все ключи в localStorage, которые начинаются с 'auditorium_'
+        // localStorage 'auditorium_'
         const historyItems = [];
         for (let i = 0; i < localStorage.length; i++) {
           const key = localStorage.key(i);

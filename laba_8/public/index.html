@@ -15,14 +15,27 @@
 <script>
 $(function () {
   var socket = io();
+  
+  socket.on('connect', function() {
+    console.log('Connected to server');
+  });
+  
   $('form').submit(function(e){
     e.preventDefault(); 
-    socket.emit('send message', $('#m').val());
+    var message = $('#m').val();
+    console.log('Sending message: ' + message);
+    socket.emit('send message', message);
     $('#m').val('');
     return false;
   });
+  
   socket.on('receive message', function(msg){
+    console.log('Received message: ' + msg);
     $('#messages').append($('<li>').text(msg));
+  });
+  
+  socket.on('connect_error', function(err) {
+    console.log('Connection error: ' + err);
   });
 });
 </script>

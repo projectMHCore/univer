@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Socket.IO chat</title>
+  <title>Socket.IO Chat</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,32 +10,20 @@
 <form action="">
   <input id="m" autocomplete="off" /><button>Send</button>
 </form>
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
 $(function () {
   var socket = io();
-  
-  socket.on('connect', function() {
-    console.log('Connected to server');
-  });
-  
   $('form').submit(function(e){
-    e.preventDefault(); 
-    var message = $('#m').val();
-    console.log('Sending message: ' + message);
-    socket.emit('send message', message);
+    e.preventDefault();
+    socket.emit('send message', $('#m').val());
     $('#m').val('');
     return false;
   });
-  
   socket.on('receive message', function(msg){
-    console.log('Received message: ' + msg);
     $('#messages').append($('<li>').text(msg));
-  });
-  
-  socket.on('connect_error', function(err) {
-    console.log('Connection error: ' + err);
   });
 });
 </script>

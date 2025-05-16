@@ -1,4 +1,3 @@
-use schedule;
 db.lessons.drop();
 
 db.createCollection("lessons");
